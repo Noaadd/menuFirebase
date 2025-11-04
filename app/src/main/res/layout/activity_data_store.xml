@@ -1,0 +1,141 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F5FF"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Usuario App"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:layout_marginBottom="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E8DFFF"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/textNombreGuardado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre: No establecido"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textEdadGuardada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edad: No establecida"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textModoOscuro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Modo Oscuro: Desactivado"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textNotificaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notificaciones: Activadas"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnGuardarNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar Nombre"
+            android:backgroundTint="#6A0DAD"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp" />
+
+        <EditText
+            android:id="@+id/editTextEdad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Edad"
+            android:inputType="number"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnGuardarEdad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar Edad"
+            android:backgroundTint="#6A0DAD"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Modo Oscuro"
+                android:textSize="16sp" />
+
+            <Switch
+                android:id="@+id/switchModoOscuro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Notificaciones"
+                android:textSize="16sp" />
+
+            <Switch
+                android:id="@+id/switchNotificaciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:backgroundTint="#D50000"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+</ScrollView>
