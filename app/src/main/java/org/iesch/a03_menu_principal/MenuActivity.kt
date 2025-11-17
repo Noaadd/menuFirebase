@@ -9,22 +9,19 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import org.iesch.a03_menu_principal.apirazas.RazasApiActivity
 import org.iesch.a03_menu_principal.cine.ListaPeliculasActivity
-import org.iesch.a03_menu_principal.dataStore.DataStoreActivity
-import org.iesch.a03_menu_principal.dataStore.LoginDB
 import org.iesch.a03_menu_principal.databinding.ActivityMenuBinding
 import org.iesch.a03_menu_principal.edadcanina.EdadCaninaActivity
 import org.iesch.a03_menu_principal.fragments.FragmentsActivity
 import org.iesch.a03_menu_principal.mapas.MapasActivity
 import org.iesch.a03_menu_principal.settings.SettingsActivity
 import org.iesch.a03_menu_principal.superheroes.RegistroSuperHeroeActivity
+import kotlin.or
 
 class MenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenuBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // 2
-        val screenSplash = installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMenuBinding.inflate( layoutInflater )
@@ -34,23 +31,6 @@ class MenuActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        val bundle = intent.extras!!
-        val email = bundle.getString("email")
-
-        binding.tvBienvenida.text = "Hola " + email
-
-        val db = LoginDB(this)
-
-        binding.btnLogOut.setOnClickListener {
-            db.cerrarSesion()
-            val intent = Intent(this, MenuLogin::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-
-
         binding.btnRazas.setOnClickListener {
             irARazasActivity()
         }
@@ -72,20 +52,24 @@ class MenuActivity : AppCompatActivity() {
         binding.btnMapas.setOnClickListener {
             irAMapas()
         }
-
-        binding.btnDataStore.setOnClickListener {
-            irADataStore()
+        binding.btnLogout.setOnClickListener{
+            irALogin()
         }
 
+
+    }
+
+    private fun irALogin() {
+        val intent = Intent(this, LoginActivity::class.java).apply {
+            // con este flag evitamos que el usuario pueda volver atras al menu despues de hacer logout
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        startActivity(intent)
+        finish()
     }
 
     private fun irAMapas() {
         val intent = Intent(this, MapasActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun irADataStore() {
-        val intent = Intent(this, DataStoreActivity::class.java)
         startActivity(intent)
     }
 
