@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "807958578394",
+    "project_id": "menufirebase-1f4f8",
+    "storage_bucket": "menufirebase-1f4f8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807958578394:android:233543ae487e4f60ea91e3",
+        "android_client_info": {
+          "package_name": "org.iesch.a03_menu_principal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807958578394-b9791205ktgf3933m7b85bao49jfrunp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL6EVrV-_2nQ8nelPEqWk0_qKXcljBbvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "807958578394-b9791205ktgf3933m7b85bao49jfrunp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

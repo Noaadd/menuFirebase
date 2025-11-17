@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.remoteconfig.remoteConfig
 import org.iesch.a03_menu_principal.apirazas.RazasApiActivity
 import org.iesch.a03_menu_principal.cine.ListaPeliculasActivity
 import org.iesch.a03_menu_principal.databinding.ActivityMenuBinding
@@ -17,9 +21,17 @@ import org.iesch.a03_menu_principal.settings.SettingsActivity
 import org.iesch.a03_menu_principal.superheroes.RegistroSuperHeroeActivity
 import kotlin.or
 
+enum class ProviderType{
+    EMAILYCONTRASENA,
+    GOOGLE
+}
 class MenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenuBinding
+
+    private val db = FirebaseFirestore.getInstance()
+
+    lateinit var email : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +43,36 @@ class MenuActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val bundle = intent.extras
+        email = bundle?.getString("usuario").toString()
+        val provider = bundle?.getString("provider")
+
+        binding.tvBienvenida.text = "Hola " + email
+
+        // Recuperamos nuestra Configuración Remota
+//        configuracionRemota()
+
+        binding.btnLogout.setOnClickListener {
+            Firebase.auth.signOut()
+            finish()
+        }
+
+        binding.btnSave.setOnClickListener {
+            // 2 - Creamos una estructura dedatos para guardar en Firestore
+            // Hemos decidido que la clave por cada usuario sea su email
+            db.collection("usuarios").document( email.toString() ).set(
+                hashMapOf(
+                    "provider" to provider,
+                    "email" to email,
+                    )
+            )
+        }
+
+
+
+
+
         binding.btnRazas.setOnClickListener {
             irARazasActivity()
         }
@@ -58,6 +100,24 @@ class MenuActivity : AppCompatActivity() {
 
 
     }
+
+//    private fun configuracionRemota() {
+//        binding.optionalButton.visibility = View.INVISIBLE
+//        Firebase.remoteConfig.fetchAndActivate().addOnCompleteListener {
+//            val showOptionalButtom = Firebase.remoteConfig.getBoolean("show_optional_button")
+//            val textoBotonOpcional = Firebase.remoteConfig.getString("optional_button_text")
+//            val colorDeFondo = Firebase.remoteConfig.getString("color_bg")
+//
+//            if (showOptionalButtom) {
+//                binding.optionalButton.visibility = View.VISIBLE
+//                binding.optionalButton.text = textoBotonOpcional
+//            }
+//            // Aplicar color de fondo usando la cadena desde Remote Config
+//            val bgColor = resolveColorString(colorDeFondo)
+//            binding.root.setBackgroundColor(bgColor)
+//        }
+//    }
+
 
     private fun irALogin() {
         val intent = Intent(this, LoginActivity::class.java).apply {

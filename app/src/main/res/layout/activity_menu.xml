@@ -50,17 +50,16 @@
 
                 <TextView
                     android:id="@+id/tv_bienvenida"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="166dp"
+                    android:layout_height="23dp"
                     android:layout_marginStart="24dp"
                     android:text="Hola, Alberto"
+                    android:textColor="@color/texto_principal"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/texto_principal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imguser"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_logout" />
+                    app:layout_constraintTop_toTopOf="parent" />
                 <ImageButton
                     android:id="@+id/btn_logout"
                     android:layout_width="40dp"
@@ -72,6 +71,20 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btn_save"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Cerrar sesión"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_bienvenida"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.466"
+                    app:srcCompat="@android:drawable/ic_menu_save" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -24,4 +24,16 @@
     <color name="bg_settings_fragment">#F0A7A1</color>
     <color name="bg_bottom_menu">#4197E5</color>
 
+
+
+
+    <color name="amarillo_firebase">#FF9800</color>
+    <color name="naranja_firebase">#FF5722</color>
+    <color name="azul_firebase">#03A9F4</color>
+    <color name="gris_firebase">#EAEBF1</color>
+
+    <color name="bg_1">#A8E6F0</color>
+    <color name="bg_2">#B9F1BB</color>
+    <color name="bg_3">#F0BFBB</color>
+
 </resources>
